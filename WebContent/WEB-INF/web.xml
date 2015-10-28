@@ -18,7 +18,7 @@
   </servlet>
   <servlet>
     <display-name>EditCD</display-name>
-    <servlet-name>EdtiCD</servlet-name>
+    <servlet-name>EditCD</servlet-name>
     <servlet-class>com.jwt.hibernate.controller.EdtiCDControllerServlet</servlet-class>
   </servlet>
   
