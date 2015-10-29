@@ -15,19 +15,18 @@ import com.jwt.hibernate.dao.UserDAO;
 @WebServlet("/EditUserControllerServlet")
 public class EditUserControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("fuck");
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
+
 		String email = (String) request.getSession().getAttribute("sessionId");
 		String address = "1801 Riverside Dr.";
 		UserDAO userDao = new UserDAO();

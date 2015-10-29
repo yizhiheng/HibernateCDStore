@@ -19,7 +19,7 @@
   <servlet>
     <display-name>EditCD</display-name>
     <servlet-name>EditCD</servlet-name>
-    <servlet-class>com.jwt.hibernate.controller.EdtiCDControllerServlet</servlet-class>
+    <servlet-class>com.jwt.hibernate.controller.EditCDControllerServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>

@@ -9,13 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.io.PrintWriter;
 import com.jwt.hibernate.dao.CDDAO;
 import com.jwt.hibernate.bean.CD;
 
-/**
- * Servlet implementation class EditCDControllerServlet
- */
 @WebServlet("/EditCDControllerServlet")
 public class EditCDControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,34 +22,21 @@ public class EditCDControllerServlet extends HttpServlet {
 
 		String cdName = request.getParameter("cdName");
 
-		try {
-			if (cdName != null) {
-				CDDAO cdDAO = new CDDAO();
-				CD cd = cdDAO.getCDDetails(cdName);
 
-//				String nextJSP;
-//				if (success) {
-//					nextJSP = "/successCD.jsp";
-//				} else {
-//					nextJSP = "/failedCD.jsp";
-//				}
-			}
-			HttpSession session = request.getSession();
-			session.setAttribute("cdName", cdName);
+		String responseJson = "{" +
+                "name: 'heal the world'," +
+                "category: 'pop'" +
+                "}";
 
-			response.sendRedirect("/HibernateWebApp/success.jsp");
-			//response.sendRedirect("/HibernateWebApp/success.html?cdName=asd&cdPrice=123");
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+        PrintWriter writer = response.getWriter();
+        writer.println(responseJson);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
