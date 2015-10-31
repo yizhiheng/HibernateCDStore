@@ -25,12 +25,13 @@ public class EditUserControllerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 
 		String email = (String) request.getSession().getAttribute("sessionId");
-		String address = "1801 Riverside Dr.";
+		String userName = request.getParameter("userName");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
 		UserDAO userDao = new UserDAO();
-		userDao.changeUserDetails(email, address);
+		userDao.changeUserDetails(email, userName, phone, address);
 		
 	}
 

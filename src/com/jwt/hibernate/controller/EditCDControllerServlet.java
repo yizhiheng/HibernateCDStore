@@ -1,7 +1,6 @@
 package com.jwt.hibernate.controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,10 +27,16 @@ public class EditCDControllerServlet extends HttpServlet {
                 "category: 'pop'" +
                 "}";
 
-        response.setContentType("application/json");
+        response.setContentType("application/html");
         response.setCharacterEncoding("utf-8");
+
         PrintWriter writer = response.getWriter();
         writer.println(responseJson);
+        writer.println("<html>");
+        writer.println("body");
+        writer.println(responseJson);
+        writer.println(responseJson);
+
 
 	}
 

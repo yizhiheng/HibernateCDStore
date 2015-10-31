@@ -54,6 +54,7 @@
 		<button onclick="fetchCDInfo()">Click me</button>
 	</form>
 
+
 	<script>
 		function fetchCDInfo() {
 			var xhttp = new XMLHttpRequest();

@@ -36,7 +36,7 @@ public class UserDAO {
             
             User user = new User();
             user.setUserName(userName);
-            user.setPassword1(password);
+            user.setPassword(password);
             user.setEmail(email);
             user.setAddress(address);
             user.setPhone(phone);
@@ -58,17 +58,11 @@ public class UserDAO {
     
     public User getUserDetails(String email) {
         try { 
-            // 3. Get Session object
         	Session session = hibernateConfig();
-            // 4. Starting Transaction
             Transaction transaction = session.beginTransaction();
-            
             Query query = session.createQuery("FROM User where email='" + email + "'");
-            
             java.util.List<User> users = query.list();
-
             transaction.commit();
-            
             return users.iterator().next();
  
         } catch (HibernateException e) {
@@ -79,16 +73,19 @@ public class UserDAO {
  
     }
     
-    public boolean changeUserDetails(String email, String address) {
+    public boolean changeUserDetails(String email, String userName, String phone, String address) {
     	try {
         	Session session = hibernateConfig();
             Transaction transaction = session.beginTransaction();
             
-            User user = (User)session.get(User.class, email); 
-         user.setAddress( address );
-         session.update(user); 
-         transaction.commit();
-            
+            User user = (User)session.get(User.class, 1);
+            user.setAddress(address);
+            user.setUserName(userName);
+            user.setPhone(phone);
+
+            session.update(user);
+            transaction.commit();
+
     	} catch (Exception e) {
     		
     	}

@@ -28,23 +28,16 @@ public class CDControllerServlet extends HttpServlet {
         try {
             CDDAO cdDAO = new CDDAO();
             boolean success = cdDAO.addCDDetails(cdName, details, price, stock, category);
-            
-            
-            String nextJSP;
-            if (success){
-            	nextJSP = "/successCD.jsp";
-            }
-            else {
-            	nextJSP = "/failedCD.jsp";
-            }
+
+
             
             HttpSession session = request.getSession();
             session.setAttribute("cdName", cdName);
             
             //response.sendRedirect("/HibernateWebApp/success.jsp");
             
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-            dispatcher.forward(request,response);
+           // RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+            //dispatcher.forward(request,response);
             
             
         } catch (Exception e) {

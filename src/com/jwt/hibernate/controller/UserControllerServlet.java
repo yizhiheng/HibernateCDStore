@@ -18,7 +18,7 @@ public class UserControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  
         String userName = request.getParameter("userName");
-        String password = request.getParameter("password1");
+        String password = request.getParameter("password");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
@@ -31,21 +31,9 @@ public class UserControllerServlet extends HttpServlet {
             String nextJSP;
             System.out.println(success);
             
-            if (success){
-            	nextJSP = "/success.jsp";
-            	
-            }
-            else {
-            	nextJSP = "/failed.jsp";
-            }
-            
             HttpSession session = request.getSession();
-            session.setAttribute("email", email);
-            
-            response.sendRedirect("/HibernateWebApp/success.jsp");
-            
-//            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-//            dispatcher.forward(request,response);
+            session.setAttribute("sessionId", email);
+            response.sendRedirect("/HibernateWebApp/mainpage.jsp");
             
             
         } catch (Exception e) {

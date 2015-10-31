@@ -24,38 +24,18 @@ public class LoginControllerServlet extends HttpServlet {
         try {
             UserDAO userDAO = new UserDAO();
             User user = userDAO.getUserDetails(email);
-            if (password.equals(user.getPassword1())) {
-            	//password correct
+
+            if (password.equals(user.getPassword())) {
+
             	System.out.println("login success");
-            	
             	HttpSession session = request.getSession();
-            	
             	session.setAttribute("sessionId", email);
-            	
-            	System.out.println("Test get session:" + session.getAttribute("sessionId"));
+                response.sendRedirect("/HibernateWebApp/mainpage.jsp");
             } else {
-            	//password wrong
             	System.out.println("wrong password");
+
             }
-            
-            
-//            
-//            String nextJSP;
-//            if (success){
-//            	nextJSP = "/success.jsp";
-//            }
-//            else {
-//            	nextJSP = "/failed.jsp";
-//            }
-////            
-//            HttpSession session = request.getSession();
-//            session.setAttribute("userName", userName);
-//            
-            //response.sendRedirect("/HibernateWebApp/success.jsp");
-//            
-//            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-//            dispatcher.forward(request,response);
-            
+
             
         } catch (Exception e) {
  
